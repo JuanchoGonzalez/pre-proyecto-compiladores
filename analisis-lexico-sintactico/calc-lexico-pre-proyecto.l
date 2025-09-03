@@ -31,10 +31,12 @@ void init();
 "!"        { return NOT;    }
 
 [0-9]+     { yylval.nro = atoi(yytext);
-		     return NRO;                }
+		     return NRO;                
+		   }
 
 [A-Za-z][A-Za-z0-9]*  { yylval.id = strdup(yytext);
-						return VAR; 			    }
+						return VAR; 			    
+					  }
 
 "=="       { return EQ;  }
 "<="       { return LE;  }
@@ -47,7 +49,12 @@ void init();
 "{"        { return LA;  }
 "}"        { return LC;  }
 
-.|\n 	  
+[ \t\r\n]+   ;  // Ignorar espacios, tabs y saltos de línea
+
+.           { printf("Error léxico: caracter no válido '%c'\n", yytext[0]); 
+			  exit(1); 
+			}
+
 
 %%
 

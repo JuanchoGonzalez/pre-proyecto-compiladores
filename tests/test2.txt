@@ -1,0 +1,5 @@
+int main () {
+    bool flag;
+    flag = true || false;
+    return 0;
+}

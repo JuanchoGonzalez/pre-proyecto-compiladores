@@ -80,15 +80,17 @@ prog:
 
 
         int result = interpretar(raiz, ts);
-        printf("Resultado: %d", result);
-        printf("\n");
-        printf("\n");
+        if ($1->valor->tipo_info == TIPO_VOID) {
+            printf("Resultado no disponible es void \n\n");
+        }else {
+            printf("Resultado: %d\n\n", result);
+        }
 
         /*
             descomentar si se quiere mostrar el arbol, 
-            para la jerarquia ,no muy lindo a la vista
+            para la jerarquia , no es muy lindo a la vista
         */
-        mostrarArbol(raiz, 0);
+        // mostrarArbol(raiz, 0);
 
         liberarArbol(raiz);
     }

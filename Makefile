@@ -3,7 +3,6 @@ CC = gcc
 CFLAGS = -Wall -Wextra -g
 TARGET = $(DIR_LEXICO)/a.out
 
-# Directorios principales
 DIR_LEXICO = analisis-lexico-sintactico
 DIR_ARBOL = arbol-sintactico
 DIR_TABLA = tabla-simbolos
@@ -20,7 +19,6 @@ LEX_OUT = $(DIR_LEXICO)/lex.yy.c
 YACC_C = $(DIR_LEXICO)/calc-sintaxis-pre-proyecto.tab.c
 YACC_H = $(DIR_LEXICO)/calc-sintaxis-pre-proyecto.tab.h
 
-# Archivos fuente adicionales
 CFILES = \
     $(DIR_ARBOL)/arbol.c \
     $(DIR_TABLA)/tabla_simbolos.c \
@@ -28,7 +26,6 @@ CFILES = \
     $(DIR_INTERPRETE)/interprete.c \
     $(DIR_ASSEMBLER)/generador_assembly.c
 
-# Includes para headers
 INCLUDES = \
     -I$(DIR_ARBOL) \
     -I$(DIR_TABLA) \
@@ -37,24 +34,31 @@ INCLUDES = \
     -I$(DIR_ASSEMBLER) \
     -I$(DIR_LEXICO)
 
+# Variable para testeo
+TEST ?= tests/test1.txt
+
 # Regla principal
 all: $(TARGET)
 
-# Compilación final
+# Compilacion
 $(TARGET): $(YACC_C) $(LEX_OUT) $(CFILES)
 	$(CC) $(CFLAGS) -o $(TARGET) $(LEX_OUT) $(YACC_C) $(CFILES) $(INCLUDES) -lm
 
-# Generar archivos de Bison (.tab.c y .tab.h) directamente en analisis-lexico-sintactico/
 $(YACC_C) $(YACC_H): $(YACC_SRC)
 	bison --output=$(YACC_C) --defines=$(YACC_H) $(YACC_SRC)
 
-# Generar archivo de Flex (lex.yy.c) dentro de analisis-lexico-sintactico/
 $(LEX_OUT): $(LEX_SRC) $(YACC_H)
 	flex -o $(LEX_OUT) $(LEX_SRC)
 
 # Ejecutar el programa
 run: $(TARGET)
-	./$(TARGET) $(DIR_LEXICO)/input-pre-proyecto.txt
+	@if [ -f "$(TEST)" ]; then \
+		echo "▶️ Ejecutando test: $(TEST)"; \
+		$(TARGET) $(TEST); \
+	else \
+		echo "❌ ERROR: El archivo $(TEST) no existe"; \
+		exit 1; \
+	fi
 
 # Limpiar archivos generados
 clean:

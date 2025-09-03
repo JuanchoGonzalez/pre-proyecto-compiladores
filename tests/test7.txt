@@ -1,0 +1,6 @@
+void main () {
+    bool flag;
+    int x;
+    flag = false || false;
+    x = 2;
+}
