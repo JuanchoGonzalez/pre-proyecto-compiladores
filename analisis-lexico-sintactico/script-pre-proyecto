@@ -1,0 +1,31 @@
+#!/bin/bash
+
+flex calc-lexico-pre-proyecto.l 
+bison -d calc-sintaxis-pre-proyecto.y
+# bison -v calc-sintaxis-pre-proyecto.y
+# bison -v sirve para ver los conflictos, lo que primero deberiamos resolver son los aritmeticos
+
+gcc lex.yy.c \
+    calc-sintaxis-pre-proyecto.tab.c \
+    ../arbol-sintactico/arbol.c \
+    ../tabla-simbolos/tabla_simbolos.c \
+    ../analisis-semantico/analisis_semantico.c \
+    ../interprete/interprete.c \
+    ../generador-assembly/generador_assembly.c \
+    -I../arbol-sintactico \
+    -I../tabla-simbolos \
+    -I../analisis-semantico \
+    -I../interprete \
+    -I../generador-assembly
+
+# Ejecucion sacar el -g si esta
+
+./a.out input-pre-proyecto.txt
+
+# Iniciar GDB, poner -g si no esta
+#gdb -ex "break insertar" \
+#    -ex "break buscar" \
+#    -ex "break yyparse" \
+#    -ex "run input-pre-proyecto.txt" \
+#    -ex "set pagination off" \
+#    ./a.out
