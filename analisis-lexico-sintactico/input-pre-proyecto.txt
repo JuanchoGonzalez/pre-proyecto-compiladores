@@ -3,7 +3,7 @@ int main () {
     bool z;
     int b;
     int suma;
-    z = ! true or false;
+    z = ! true || false;
     a = 33;
     b = 55;
     suma = a + b;

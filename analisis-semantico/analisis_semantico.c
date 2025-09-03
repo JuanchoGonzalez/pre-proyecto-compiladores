@@ -154,5 +154,23 @@ void recorrerArbol(nodo *raiz, tabla_simbolos *ts){
             }
             break;
         }
+        
+        // casos donde la semantica no importa
+        case T_MAIN:
+        case T_DECLS:
+        case T_SENTS:
+        case T_SENT:
+        case T_INT:
+        case T_BOOL:
+        case T_VOID:
+        case T_EQ:
+        case T_LE:
+        case T_GE:
+        case T_LT:
+        case T_GT:
+            break;
+
+        default:
+            printf("Token no declarado: %d\n", raiz->valor->tipo_token);            
     }
 }

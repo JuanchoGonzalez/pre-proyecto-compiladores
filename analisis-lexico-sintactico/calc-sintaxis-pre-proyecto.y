@@ -65,7 +65,7 @@ prog:
         printf("\n");
 
         // Crear el archivo de salida
-        FILE *fp = fopen("assembly.asm", "w");
+        FILE *fp = fopen("analisis-lexico-sintactico/assembly.asm", "w");
         if (!fp) {
             perror("Error al crear el archivo");
             exit(1);

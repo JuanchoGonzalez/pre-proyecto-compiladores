@@ -26,8 +26,8 @@ void init();
 "+"        { return SUM;    }
 "*"        { return MULT;   }
 "-"        { return MEN;    }
-"and"      { return AND;    }
-"or"       { return OR;     }
+"&&"       { return AND;    }
+"||"       { return OR;     }
 "!"        { return NOT;    }
 
 [0-9]+     { yylval.nro = atoi(yytext);

@@ -1,5 +1,7 @@
 analisis-lexico-sintactico/*.tab.c
 analisis-lexico-sintactico/*.tab.h
 analisis-lexico-sintactico/lex.yy.c
+analisis-lexico-sintactico/*.output
 analisis-lexico-sintactico/a.out
 analisis-lexico-sintactico/assembly.asm
+.vscode/
