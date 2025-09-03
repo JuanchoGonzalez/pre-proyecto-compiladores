@@ -5,10 +5,9 @@
 
 Este proyecto implementa un compilador/interprete simple para un lenguaje que soporta variables, operaciones aritméticas y booleanas, declaración de funciones `main`, y generación de pseudo-assembly. Está desarrollado en **C** utilizando **Flex** y **Bison**.
 
-## Lenguaje pequenio
+## Lenguaje pequeño
 
-
-- Declaración de variables (`int`, `bool`, `void`)
+- Declaración de variables (`int`, `bool`)
 - Operaciones aritméticas (`+`, `-`, `*`)
 - Operaciones booleanas (`&&`, `||`, `!`)
 - Función principal `main`
@@ -31,7 +30,11 @@ En la **raíz del proyecto**, ejecutá:
 
 > make
 
-en la raiz del proyecto, esto genera un ejecutable a.out dentro de la carpeta analisis-lexico-sintactico
+Esto genera un ejecutable a.out dentro de la carpeta /analisis-lexico-sintactico, se usa siempre que se haga cambios en el codigo fuente.
+
+> make clean 
+
+Si se quiere borrar los archivos generados automaticamente, el ejecutable a.out y los de flex y bison, se usa siempre que se quiera limpiar el proyecto y recompilar desde cero.
 
 ## Ejecucion
 
@@ -39,7 +42,7 @@ Por defecto si ejecutas:
 
 > make run
 
-el compilador correra usando el archivo de prueba test1.txt ubicado dentro de la carpeta tests
+El compilador correra usando el archivo de prueba test1.txt ubicado dentro de la carpeta tests
 
 Si querés usar otro archivo de entrada, indicá el test explícitamente con:
 
@@ -51,7 +54,6 @@ o
 
 para compilar el test3 y testneg2 correlativamente
 
-## Aclaraciones
 
 ## Aclaraciones
 
@@ -60,7 +62,7 @@ para compilar el test3 y testneg2 correlativamente
 Dentro de la carpeta `tests/` se encuentran casos preparados para validar el compilador.
 
 ### **Tests positivos** ✅  
-Estos tests contienen entradas **válidas**. El compilador debería procesarlos correctamente y generar el archivo `assembly.asm` dentro de la carpeta analisis-lexico-sintactico para visualizar si se quiere
+Estos tests contienen entradas **válidas**. El compilador debería procesarlos correctamente y generar el archivo `assembly.asm` dentro de la carpeta /analisis-lexico-sintactico para visualizar si se quiere.
 
 - Si se corre **otro test**, el archivo **se sobrescribe** con el nuevo pseudo-assembly.
 
